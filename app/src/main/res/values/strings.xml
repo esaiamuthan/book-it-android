@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Book It</string>
+
+    <!--Login Related-->
+    <string name="login">Login</string>
+    <string name="login_username_label">Email</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_forget_password_label">Forgotten?</string>
+    <string name="login_label">Login</string>
+    <string name="forget_submit_latbel">Submit</string>
+
+    <!--Register Related-->
+    <string name="registration">Registration</string>
+    <string name="register_label">Register</string>
+    <string name="create_account">Create an account</string>
+    <string name="register_name_label">Name</string>
+    <string name="register_email_label">Email</string>
+    <string name="register_password_label">Password</string>
+    <string name="register_confirm_password_label">Confirm Password</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="submit">Submit</string>
+    <string name="register_mobile_label">Mobile Number</string>
+    <string name="logout">Logout</string>
+
+
+    <string-array name="gender_array">
+        <item>Choose gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+</resources>

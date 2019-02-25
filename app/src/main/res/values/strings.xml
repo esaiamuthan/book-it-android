@@ -51,7 +51,7 @@
     <string name="title_activity_booking_history">My Bookings</string>
     <string name="new_booking">New Booking</string>
     <string name="my_bookings">My Bookings</string>
-    <string name="title_activity_booking_search">BookingSearchActivity</string>
+    <string name="title_activity_booking_search">Availability Result</string>
     <string name="from">From : </string>
     <string name="to">To :</string>
     <string name="title_activity_search">Train Search</string>
@@ -60,7 +60,7 @@
     <string name="to_station">To Station</string>
     <string name="select_date">Select Date</string>
     <string name="available_trains">Available Trains</string>
-    <string name="title_activity_create_booking">CreateBookingActivity</string>
+    <string name="title_activity_create_booking">Book Ticket</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -71,4 +71,6 @@
     <string name="title_activity_my_profile">My Profile</string>
     <string name="passenger_age">Passenger Age</string>
     <string name="passengers">Passengers</string>
+    <string name="book_now">Book Now</string>
+    <string name="no_records_found">No records found</string>
 </resources>

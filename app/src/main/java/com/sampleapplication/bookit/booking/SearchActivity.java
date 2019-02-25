@@ -56,6 +56,8 @@ public class SearchActivity extends BaseActivity
 
     TrainsAdapter trainsAdapter;
 
+    String routeId = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +73,6 @@ public class SearchActivity extends BaseActivity
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        String routeId = "";
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d(TAG, document.getId() + " => " + document.getData());
                             routeId = document.getId();
@@ -84,10 +85,6 @@ public class SearchActivity extends BaseActivity
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
-//        Intent intent = new Intent(this, BookingSearchActivity.class);
-//        intent.putExtra("sourceStation", sourceStation);
-//        intent.putExtra("destStation", destStation);
-//        startActivity(intent);
     }
 
     private void getTrains(String routeId) {
@@ -264,7 +261,12 @@ public class SearchActivity extends BaseActivity
 
     @Override
     public void onTrainSelect(Train train) {
-        Intent intent = new Intent(this, CreateBookingActivity.class);
+        Intent intent = new Intent(this, BookingSearchActivity.class);
+        intent.putExtra("train", train);
+        intent.putExtra("routeId", routeId);
+        intent.putExtra("sourceStation", sourceStation);
+        intent.putExtra("destStation", destStation);
+        intent.putExtra("selectedDate", binding.contentSearch.etDate.getText().toString());
         startActivity(intent);
     }
 }

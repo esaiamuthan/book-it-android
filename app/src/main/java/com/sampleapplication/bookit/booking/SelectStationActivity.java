@@ -71,6 +71,7 @@ public class SelectStationActivity extends BaseActivity
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Log.d(TAG, document.getId() + " => " + document.getData());
                             Station station = document.toObject(Station.class);
+                            station.setStationId(Long.parseLong(document.getId()));
                             stationsList.add(station);
                         }
                         stationsAdapter.notifyData(stationsList);

@@ -88,10 +88,8 @@ public class PassengerInfoFragment extends BaseBottomSheetDialogFragment {
 
     private void getPassengerInfo() {
         binding.linearProgress.setVisibility(View.VISIBLE);
-        db.collection("bookit")
-                .document(Objects.requireNonNull(mAuth.getUid()))
-                .collection("bookings")
-                .document(bookingInfo.getDate())
+        db.collection("bookings")
+                .document(bookingInfo.getDocumentId())
                 .collection("passengers")
                 .get()
                 .addOnCompleteListener(task -> {

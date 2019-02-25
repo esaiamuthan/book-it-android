@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class BookingInfo implements Serializable {
 
+    public String documentId;
+    public String uId;
     public String date;
     public long booked;
     public long route;
@@ -13,6 +15,22 @@ public class BookingInfo implements Serializable {
     public String trainTime;
     public String source;
     public String destination;
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
 
     public String getDate() {
         return date;

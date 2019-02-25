@@ -14,11 +14,13 @@ import android.view.View;
 import com.bookit.app.R;
 import com.bookit.app.databinding.ActivityBookingHistoryBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sampleapplication.bookit.base.BaseActivity;
 import com.sampleapplication.bookit.history.adapter.BookingsAdapter;
 import com.sampleapplication.bookit.model.BookingInfo;
+import com.sampleapplication.bookit.model.Passenger;
 import com.sampleapplication.bookit.model.User;
 
 import java.util.ArrayList;
@@ -40,6 +42,8 @@ public class BookingHistoryActivity extends BaseActivity
     ArrayList<BookingInfo> bookingList = new ArrayList<>();
 
     BookingsAdapter bookingsAdapter;
+
+    ArrayList<String> trainList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +80,18 @@ public class BookingHistoryActivity extends BaseActivity
 
     private void getBookingHistory() {
         binding.linearProgress.setVisibility(View.VISIBLE);
-        db.collection("bookit")
-                .document(Objects.requireNonNull(mAuth.getUid()))
-                .collection("bookings")
+
+        db.collection("bookings")
+                .whereEqualTo("uId", mAuth.getUid())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         bookingList.clear();
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d(TAG, document.getId() + " => " + document.getData());
-                            BookingInfo leave = document.toObject(BookingInfo.class);
-                            leave.setDate(document.getId());
-                            bookingList.add(leave);
+                        Log.d(TAG, task.getException() + " => ");
+                        for (QueryDocumentSnapshot documentNew : task.getResult()) {
+                            BookingInfo bookingInfo = documentNew.toObject(BookingInfo.class);
+                            bookingInfo.setDocumentId(documentNew.getId());
+                            bookingList.add(bookingInfo);
                         }
                         bookingsAdapter.notifyData(bookingList);
                     } else {

@@ -1,13 +1,15 @@
 package com.sampleapplication.bookit.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Train {
+public class Train implements Serializable {
 
     public String trainCode;
     public String name;
     public List<Integer> routes;
     public List<String> days;
+    public String time;
 
     public String getTrainCode() {
         return trainCode;
@@ -39,5 +41,13 @@ public class Train {
 
     public void setDays(List<String> days) {
         this.days = days;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

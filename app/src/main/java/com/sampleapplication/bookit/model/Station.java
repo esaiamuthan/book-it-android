@@ -4,8 +4,17 @@ import java.io.Serializable;
 
 public class Station implements Serializable {
 
+    public long stationId;
     public String name;
     public String code;
+
+    public long getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(long stationId) {
+        this.stationId = stationId;
+    }
 
     public String getName() {
         return name;

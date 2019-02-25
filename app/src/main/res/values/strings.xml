@@ -26,10 +26,49 @@
     <string name="logout">Logout</string>
 
 
+    <string-array name="proof_array">
+        <item>Choose proof</item>
+        <item>Aadhar Card</item>
+        <item>Voter Id</item>
+        <item>Pan Card</item>
+    </string-array>
+
+    <string-array name="berth_array">
+        <item>Choose berth</item>
+        <item>Lower</item>
+        <item>Middle</item>
+        <item>Upper</item>
+        <item>Side Lower</item>
+        <item>Side Upper</item>
+    </string-array>
+
     <string-array name="gender_array">
         <item>Choose gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>
     </string-array>
+    <string name="title_activity_booking_history">My Bookings</string>
+    <string name="new_booking">New Booking</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="title_activity_booking_search">BookingSearchActivity</string>
+    <string name="from">From : </string>
+    <string name="to">To :</string>
+    <string name="title_activity_search">Train Search</string>
+    <string name="title_activity_select_station">Search Location</string>
+    <string name="from_station">From Station</string>
+    <string name="to_station">To Station</string>
+    <string name="select_date">Select Date</string>
+    <string name="available_trains">Available Trains</string>
+    <string name="title_activity_create_booking">CreateBookingActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="passenger_name">Passenger Name</string>
+    <string name="add_passenger">Add Passenger</string>
+    <string name="add">Add</string>
+    <string name="my_profile">My Profile</string>
+    <string name="title_activity_my_profile">My Profile</string>
+    <string name="passenger_age">Passenger Age</string>
+    <string name="passengers">Passengers</string>
 </resources>

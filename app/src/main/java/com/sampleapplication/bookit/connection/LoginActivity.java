@@ -7,14 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bookit.app.R;
+import com.bookit.app.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.sampleapplication.bookit.home.HomeActivity;
-import com.sampleapplication.bookit.R;
 import com.sampleapplication.bookit.base.BaseActivity;
-import com.sampleapplication.bookit.databinding.ActivityLoginBinding;
+import com.sampleapplication.bookit.home.HomeActivity;
 
 import java.util.Objects;
 

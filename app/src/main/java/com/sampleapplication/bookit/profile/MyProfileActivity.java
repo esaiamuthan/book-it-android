@@ -1,8 +1,12 @@
-package com.sampleapplication.bookit.connection;
+package com.sampleapplication.bookit.profile;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,43 +15,66 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bookit.app.R;
-import com.bookit.app.databinding.ActivityRegisterBinding;
+import com.bookit.app.databinding.ActivityMyProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sampleapplication.bookit.base.BaseActivity;
+import com.sampleapplication.bookit.connection.LoginActivity;
+import com.sampleapplication.bookit.profile.MyProfileActivity;
+import com.sampleapplication.bookit.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class RegisterActivity extends BaseActivity {
+public class MyProfileActivity extends BaseActivity {
 
-    private ActivityRegisterBinding binding;
-    private FirebaseAuth mAuth;
+    private ActivityMyProfileBinding binding;
 
-    private String TAG = RegisterActivity.class.getSimpleName();
+    private String TAG = MyProfileActivity.class.getSimpleName();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private FirebaseAuth mAuth;
+
+    private User currentUserInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_my_profile);
         initUI();
     }
 
-
     @Override
     public void initUI() {
-        setSupportActionBar(binding.tbRegister);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        binding.linearProgress.setVisibility(View.VISIBLE);
+        db.collection("bookit")
+                .document(Objects.requireNonNull(mAuth.getUid()))
+                .get().addOnSuccessListener(documentSnapshot -> {
+            currentUserInfo = documentSnapshot.toObject(User.class);
+            prefillData();
+            binding.linearProgress.setVisibility(View.GONE);
+        });
+    }
+
+    private void prefillData() {
+        binding.etMobile.setText(currentUserInfo.getMobile());
+        binding.etRName.setText(currentUserInfo.getName());
+        binding.etREmail.setText(currentUserInfo.getEmail());
+        binding.etREmail.setEnabled(false);
+        binding.spGender.setSelection(currentUserInfo.getGender(), true);
     }
 
     @Override
@@ -67,47 +94,17 @@ public class RegisterActivity extends BaseActivity {
             case R.id.action_submit:
                 hideKeyboard();
                 if (checkFields()) {
-                    callRegisterAPi();
+                    updateUser();
                 }
                 break;
         }
         return true;
     }
 
-    private void callRegisterAPi() {
+
+    private void updateUser() {
         binding.linearProgress.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(binding.etREmail.getText().toString(),
-                binding.etRPassword.getText().toString())
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success");
 
-                        createUser();
-                    } else {
-                        binding.linearProgress.setVisibility(View.GONE);
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                        try {
-                            throw Objects.requireNonNull(task.getException());
-                        } catch (FirebaseAuthWeakPasswordException e) {
-                            Toast.makeText(RegisterActivity.this, "Weak password.",
-                                    Toast.LENGTH_SHORT).show();
-                        } catch (FirebaseAuthInvalidCredentialsException e) {
-                            Toast.makeText(RegisterActivity.this, "Invalid email address.",
-                                    Toast.LENGTH_SHORT).show();
-                        } catch (FirebaseAuthUserCollisionException e) {
-                            Toast.makeText(RegisterActivity.this, "User already exists.",
-                                    Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            Toast.makeText(RegisterActivity.this, "" + e.getMessage(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private void createUser() {
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
         user.put("name", binding.etRName.getText().toString());
@@ -115,16 +112,11 @@ public class RegisterActivity extends BaseActivity {
         user.put("mobile", binding.etMobile.getText().toString());
         user.put("gender", binding.spGender.getSelectedItemPosition());
 
-        // Add a new document with a generated ID
-
         db.collection("bookit")
                 .document(Objects.requireNonNull(mAuth.getUid()))
-                .set(user)
+                .update(user)
                 .addOnSuccessListener(documentReference -> {
                     binding.linearProgress.setVisibility(View.GONE);
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
                     finish();
                 })
                 .addOnFailureListener(throable -> {
@@ -135,25 +127,21 @@ public class RegisterActivity extends BaseActivity {
                     try {
                         throw Objects.requireNonNull(throable);
                     } catch (FirebaseAuthWeakPasswordException e) {
-                        Toast.makeText(RegisterActivity.this, "Weak password.",
+                        Toast.makeText(MyProfileActivity.this, "Weak password.",
                                 Toast.LENGTH_SHORT).show();
                     } catch (FirebaseAuthInvalidCredentialsException e) {
-                        Toast.makeText(RegisterActivity.this, "Invalid email address.",
+                        Toast.makeText(MyProfileActivity.this, "Invalid email address.",
                                 Toast.LENGTH_SHORT).show();
                     } catch (FirebaseAuthUserCollisionException e) {
-                        Toast.makeText(RegisterActivity.this, "User already exists.",
+                        Toast.makeText(MyProfileActivity.this, "User already exists.",
                                 Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
-                        Toast.makeText(RegisterActivity.this, "" + e.getMessage(),
+                        Toast.makeText(MyProfileActivity.this, "" + e.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    @Override
-    public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 
     public boolean checkFields() {
         boolean validated = true;
@@ -171,21 +159,6 @@ public class RegisterActivity extends BaseActivity {
             validated = false;
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etREmail.getText().toString()).matches()) {
             binding.etREmail.setError("Please enter valid email address");
-            validated = false;
-        } else if (binding.etRPassword.getText().toString().isEmpty()) {
-            binding.etRPassword.setError("Please enter your password");
-            validated = false;
-        } else if (binding.etRPassword.getText().toString().length() < 6) {
-            binding.etRPassword.setError("Password should be 6 characters");
-            validated = false;
-        } else if (binding.etRCnfPassword.getText().toString().isEmpty()) {
-            binding.etRCnfPassword.setError("Please enter confirm password");
-            validated = false;
-        } else if (binding.etRCnfPassword.getText().toString().length() < 6) {
-            binding.etRCnfPassword.setError("Password should be 6 characters");
-            validated = false;
-        } else if (!binding.etRPassword.getText().toString().equals(binding.etRCnfPassword.getText().toString())) {
-            binding.etRCnfPassword.setError("Password and confirm password not matched");
             validated = false;
         } else if (binding.spGender.getSelectedItemPosition() == 0) {
             showMessage("Please select your gender");

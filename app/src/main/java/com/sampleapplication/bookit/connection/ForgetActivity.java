@@ -8,12 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bookit.app.R;
+import com.bookit.app.databinding.ActivityForgetBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.sampleapplication.bookit.R;
 import com.sampleapplication.bookit.base.BaseActivity;
-import com.sampleapplication.bookit.databinding.ActivityForgetBinding;
 
 public class ForgetActivity extends BaseActivity implements View.OnClickListener {
 

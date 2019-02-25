@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.sampleapplication.bookit.home.HomeActivity">
+        tools:context="com.sampleapplication.bookit.booking.BookingSearchActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -23,8 +23,8 @@
         </android.support.design.widget.AppBarLayout>
 
         <include
-            android:id="@+id/content_home"
-            layout="@layout/content_home" />
+            android:id="@+id/content_booking_search"
+            layout="@layout/content_booking_search" />
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

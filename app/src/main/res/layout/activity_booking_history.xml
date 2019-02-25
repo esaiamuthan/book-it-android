@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.sampleapplication.bookit.home.HomeActivity">
+        tools:context="com.sampleapplication.bookit.history.BookingHistoryActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -23,8 +23,27 @@
         </android.support.design.widget.AppBarLayout>
 
         <include
-            android:id="@+id/content_home"
-            layout="@layout/content_home" />
+            android:id="@+id/content_booking_history"
+            layout="@layout/content_booking_history" />
 
+
+        <LinearLayout
+            android:id="@+id/linearProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:alpha="0.7"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ProgressBar
+                style="@style/Base.Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
 </layout>

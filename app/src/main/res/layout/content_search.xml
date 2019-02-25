@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.sampleapplication.bookit.booking.SearchActivity"
+        tools:showIn="@layout/activity_search">
+
+        <EditText
+            android:id="@+id/etSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:clickable="true"
+            android:drawableEnd="@drawable/icn_arrow_drop_down"
+            android:drawablePadding="@dimen/spacing_small"
+            android:focusable="false"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/from_station"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/font_medium" />
+
+        <EditText
+            android:id="@+id/etDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:clickable="true"
+            android:drawableEnd="@drawable/icn_arrow_drop_down"
+            android:drawablePadding="@dimen/spacing_small"
+            android:focusable="false"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/to_station"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/font_medium" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_date_range"
+            android:drawablePadding="@dimen/spacing_small"
+            android:focusable="false"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/select_date"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/tvAvailable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="@dimen/spacing_normal"
+            android:text="@string/available_trains"
+            android:textColor="@color/dark_black"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTrains"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

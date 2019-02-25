@@ -21,12 +21,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bookit.app.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.sampleapplication.bookit.R;
 import com.sampleapplication.bookit.utils.CustomTypefaceSpan;
 
 import de.hdodenhof.circleimageview.CircleImageView;

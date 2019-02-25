@@ -1,0 +1,88 @@
+<layout>
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_normal"
+        tools:context="com.sampleapplication.bookit.booking.create.AddpassengerFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/passenger_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:textColor="@color/dark_black" />
+
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/passenger_age"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:lines="1"
+                android:textColor="@color/dark_black" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spProof"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/proof_array"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingBottom="@dimen/spacing_normal" />
+
+            <EditText
+                android:id="@+id/etProofId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/passenger_age"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:lines="1"
+                android:textColor="@color/dark_black" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spBerth"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/berth_array"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingBottom="@dimen/spacing_normal" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spGender"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/gender_array"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingBottom="@dimen/spacing_normal" />
+
+            <TextView
+                android:id="@+id/tvAdd"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/color_primary"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:padding="@dimen/spacing_small"
+                android:text="@string/add"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.sampleapplication.bookit.home.HomeActivity"
+        tools:showIn="@layout/activity_home">
+
+        <TextView
+            android:id="@+id/tvNewBooking"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_huge"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:background="@color/color_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_regular"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/new_booking"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/tvBookingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_huge"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:background="@color/color_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_regular"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/my_bookings"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_medium" />
+        <TextView
+            android:id="@+id/tvMyProfile"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_huge"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:background="@color/color_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_regular"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/my_profile"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_medium" />
+    </LinearLayout>
+</layout>

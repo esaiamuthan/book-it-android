@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.sampleapplication.bookit">
+    package="com.bookit.app">
 
     <application
         android:allowBackup="false"
@@ -12,26 +12,50 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".connection.ForgetActivity"
+            android:name="com.sampleapplication.bookit.profile.MyProfileActivity"
+            android:label="@string/title_activity_my_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.sampleapplication.bookit.booking.create.CreateBookingActivity"
+            android:label="@string/title_activity_create_booking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.booking.SelectStationActivity"
+            android:label="@string/title_activity_select_station"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.booking.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.booking.BookingSearchActivity"
+            android:label="@string/title_activity_booking_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.history.BookingHistoryActivity"
+            android:label="@string/title_activity_booking_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sampleapplication.bookit.connection.ForgetActivity"
             android:label="Forget Password"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".connection.RegisterActivity"
+            android:name="com.sampleapplication.bookit.connection.RegisterActivity"
             android:label="@string/registration"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".connection.LoginActivity"
+            android:name="com.sampleapplication.bookit.connection.LoginActivity"
             android:label="@string/login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".home.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.sampleapplication.bookit.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
